@@ -7,7 +7,12 @@ team name, the opponent team score, and whether it was a W or L for your team.''
 # This means that we need to make the five functions first and then the 6th function will be the big one that uses all of them
 
 # FUNCTION #1
-
+def display_intro():
+    print("Welcome to the Women's Soccer Season Simulation!")
+    print("In this simulation, you'll enter your team name and the opponents.")
+    print("Scores will be randomly generated, and you'll receive your season results at the end.")
+    player_name = input("Please enter your name: ")
+    return player_name
 
 # FUNCTION #2
 
@@ -23,7 +28,10 @@ team name, the opponent team score, and whether it was a W or L for your team.''
 
 # FUNCTION #6 - the main function
 def Main():
-    null = None
+    print("nothing")
+    # Call the display_intro function to get player name
+    player_name = display_intro()
+    print(f"\nWelcome, {player_name}!")
 
 # Import Random and set min and max goals and 0 variables
 import random
@@ -32,18 +40,20 @@ iGoalMin = 0
 iWins = 0
 iLosses = 0
 
+Main()
+
 # Input home team name and number of games
 sTeam = input("\nEnter your team name: ")
-iNumGames = int( input( "Enter number of games in season: "))
+iNumGames = int(input("Enter number of games in season: "))
 
 # create dictionary and list for later use
 dictGames = {}
 lstStats = []
 
 # For loop asking for info from each game the team played
-for iCountGames in range(0,iNumGames):
+for iCountGames in range(0, iNumGames):
     
-    #gather inputs from games
+    # gather inputs from games
     sOpponentTeam = input (f"\nEnter opponent team name for game {iCountGames + 1}: ")
     
     # reset team scores
@@ -51,11 +61,11 @@ for iCountGames in range(0,iNumGames):
     iOpponentScore = 0
     
     while (iYourScore == iOpponentScore):
-        iYourScore = random.randrange(iGoalMin,iGoalMax)
-        iOpponentScore = random.randrange(iGoalMin,iGoalMax)
+        iYourScore = random.randrange(iGoalMin, iGoalMax)
+        iOpponentScore = random.randrange(iGoalMin, iGoalMax)
 
     # find out if game was a win or a loss and store to variable
-    if iYourScore > iOpponentScore :
+    if iYourScore > iOpponentScore:
         sWL = "W"
         iWins += 1
     else:
@@ -68,10 +78,10 @@ for iCountGames in range(0,iNumGames):
 
 # Output everything from dictionary and final record
 print("\n\n\n\n\nFinal Results from this season:")
-for iCountGames in range(0,len(dictGames)):
+for iCountGames in range(0, len(dictGames)):
     lstGameStats = dictGames[iCountGames]
     print(f"\n{sTeam} vs. {lstGameStats[0]}")
-    if lstGameStats[1] > lstGameStats[2] :
+    if lstGameStats[1] > lstGameStats[2]:
         print(f"Won {lstGameStats[1]} - {lstGameStats[2]}")
     else:
         print(f"Lost {lstGameStats[1]} - {lstGameStats[2]}")
@@ -80,10 +90,10 @@ print(f"\nEnding {sTeam} Record: {iWins} - {iLosses}")
 
 # Calculate Win % and output remaining stuff
 fWinPer = iWins / (iWins + iLosses) * 100
-if fWinPer >= 75 :
+if fWinPer >= 75:
     print(f"Win Percentage: {fWinPer:.1f}%")
     print(f"\nYou're going to the Women's Soccer National Tournament!!!!\n")
-elif fWinPer >= 50 :
+elif fWinPer >= 50:
     print(f"Win Percentage: {fWinPer:.1f}%")
     print(f"\nYou had a pretty good season!\n")
 else: 
