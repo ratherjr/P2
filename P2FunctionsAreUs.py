@@ -1,7 +1,29 @@
-# Joseph Rather
-'''Store women's soccer game stores and output them with the season record
+# Joseph Rather, Chad Laursen, Alayna Smith, Elias Fobert, Isaac Johnson
+'''Store women's soccer game scores and output them with the season record
 In the dictionary you should store your team name, your team score, the opponent 
 team name, the opponent team score, and whether it was a W or L for your team.'''
+
+# Based on the instructions it looks like we make one big function that includes the five functions that we each make.
+# This means that we need to make the five functions first and then the 6th function will be the big one that uses all of them
+
+# FUNCTION #1
+
+
+# FUNCTION #2
+
+
+# FUNCTION #3 - Joseph
+
+
+# FUNCTION #4
+
+
+# FUNCTION #5
+
+
+# FUNCTION #6 - the main function
+def Main():
+    null = None
 
 # Import Random and set min and max goals and 0 variables
 import random
