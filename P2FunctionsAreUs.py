@@ -3,8 +3,8 @@
 In the dictionary you should store your team name, your team score, the opponent 
 team name, the opponent team score, and whether it was a W or L for your team.'''
 
-# Based on the instructions it looks like we make one big function that includes the five functions that we each make.
-# This means that we need to make the five functions first and then the 6th function will be the big one that uses all of them
+# Based on the instructions it looks like we can make one big function that includes some of the other functions
+# This means that we need to make the five functions first and then the 6th function will be the big one that includes some of them
 
 # FUNCTION #1
 
@@ -14,6 +14,29 @@ team name, the opponent team score, and whether it was a W or L for your team.''
 
 # FUNCTION #3 - Joseph
 
+def teams(lstTeams=["BYU","Utah","UVU","USU","Utah Tech","SLCC"]):
+    iCount = 0
+    global sTeam
+    if sTeam == None:
+        for team in lstTeams:
+            iCount += 1
+            print(f"{iCount}. {team}")
+
+        iHomeTeam = int(input("Enter the number of the home team: "))
+        print(f'\n')
+        
+        sTeam = lstTeams[iHomeTeam - 1]
+
+        del lstTeams[iHomeTeam - 1]
+    
+    iCount = 0
+    for team in lstTeams:
+        iCount += 1
+        print(f"{iCount}. {team}")
+
+    iAwayTeam = int(input("Enter the number of the away team: "))
+    print(f'\n')
+    return lstTeams[iAwayTeam - 1]
 
 # FUNCTION #4
 
@@ -31,21 +54,23 @@ iGoalMax = 7
 iGoalMin = 0
 iWins = 0
 iLosses = 0
+sTeam = None
 
-# Input home team name and number of games
-sTeam = input("\nEnter your team name: ")
-iNumGames = int( input( "Enter number of games in season: "))
+# Input number of games
+iNumGames = int( input( "\nEnter number of games in season: "))
+print(f'\n')
 
 # create dictionary and list for later use
-dictGames = {}
+lstGames = ["BYU","Utah","UVU","USU","Utah Tech","SLCC"]
 lstStats = []
+dictGames = {}
 
 # For loop asking for info from each game the team played
 for iCountGames in range(0,iNumGames):
     
-    #gather inputs from games
-    sOpponentTeam = input (f"\nEnter opponent team name for game {iCountGames + 1}: ")
-    
+    # Call function #3
+    sOpponentTeam = teams(lstGames)
+
     # reset team scores
     iYourScore = 0
     iOpponentScore = 0
@@ -67,7 +92,7 @@ for iCountGames in range(0,iNumGames):
     dictGames[iCountGames] = lstStats
 
 # Output everything from dictionary and final record
-print("\n\n\n\n\nFinal Results from this season:")
+print("\n\n\nFinal Results from this season:")
 for iCountGames in range(0,len(dictGames)):
     lstGameStats = dictGames[iCountGames]
     print(f"\n{sTeam} vs. {lstGameStats[0]}")
