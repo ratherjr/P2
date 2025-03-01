@@ -6,7 +6,7 @@ team name, the opponent team score, and whether it was a W or L for your team.''
 # Based on the instructions it looks like we can make one big function that includes some of the other functions
 # This means that we need to make the five functions first and then the 6th function will be the big one that includes some of them
 
-# FUNCTION #1
+# FUNCTION #1 - Chad
 def display_intro():
     print("Welcome to the Women's Soccer Season Simulation!")
     print("In this simulation, you'll enter your team name and the opponents.")
@@ -14,8 +14,13 @@ def display_intro():
     player_name = input("Please enter your name: ")
     return player_name
 
-# FUNCTION #2
-
+# FUNCTION #2 - Isaac
+def Menu():
+    print("Menu")
+    print("1. Start a new season")
+    print("2. View final record")
+    print("3.  Exit")
+    return int(input("Enter your choice (1, 2, or 3): "))
 
 # FUNCTION #3 - Joseph
 
@@ -40,14 +45,27 @@ def teams(lstTeams=["BYU","Utah","UVU","USU","Utah Tech","SLCC"]):
         print(f"{iCount}. {team}")
 
     iAwayTeam = int(input("Enter the number of the away team: "))
+    sAwayTeam = lstTeams[iAwayTeam - 1]
+
     print(f'\n')
-    return lstTeams[iAwayTeam - 1]
+    return lstTeams[sAwayTeam]
 
-# FUNCTION #4
+# FUNCTION #4 - Alayna
+def play_game(sTeam, sAwayTeam):
+    print(f"Game between {sTeam} and {sAwayTeam}")
+    homeScore, opponentScore = 0, 0
+    while homeScore == opponentScore:
+        homeScore = random.randint(0,7)
+        opponentScore = random.randint(0,7)
+    if homeScore > opponentScore:
+        result = "W"
+    else:
+        result = "L"
+    return homeScore, opponentScore, result
 
 
-# FUNCTION #5
 
+# FUNCTION #5 - Elias
 
 # FUNCTION #6 - the main function
 def Main():
