@@ -67,9 +67,35 @@ sTeam = None
 
 Main()
 
-# Input number of games
-iNumGames = int( input( "\nEnter number of games in season: "))
-print(f'\n')
+function2
+def display_menu():
+    iOption = 0
+    while not iOption == 4 :
+        print( """Select Option
+Option 1- Select 2 Teams
+Option 2- Generate random scores for both teams
+Option 3- Display final record for a team
+Option 4- Quit""")
+        iOption = int( input( "Option: "))
+
+        if iOption == 1 :
+            teams()
+        
+        elif iOption == 2 :
+            # function 4
+
+        elif iOption == 3 :
+            # enter function 5 here
+
+        elif iOption == 4:
+            print( "\nExiting the program. Goodbye!")    
+    
+        else : print("Please enter valid number character: ")
+
+
+# Input home team name and number of games
+sTeam = input("\nEnter your team name: ")
+iNumGames = int( input( "Enter number of games in season: "))
 
 # create dictionary and list for later use
 lstGames = ["BYU","Utah","UVU","USU","Utah Tech","SLCC"]
@@ -127,3 +153,5 @@ else:
     print(f"Win Percentage: {fWinPer:.1f}%")
     print(f"\nThis season wasn't that great :(")
     print(f"Try again next year.\n")
+
+display_menu()
