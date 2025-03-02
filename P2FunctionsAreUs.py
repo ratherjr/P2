@@ -17,8 +17,8 @@ def display_intro():
 # FUNCTION #2 - Isaac
 def Menu():
     print("Menu")
-    print("1. Start a new season")
-    print("2. View final record")
+    print("1. Play Another Game")
+    print("2. View Season record")
     print("3.  Exit")
     return int(input("Enter your choice (1, 2, or 3): "))
 
@@ -63,9 +63,22 @@ def play_game(sTeam, sAwayTeam):
         result = "L"
     return homeScore, opponentScore, result
 
-
-
 # FUNCTION #5 - Elias
+def final_record(sTeam, iWins, iLosses, fWinPer):
+    #Display each game, both team scores, and 
+    print(f"{sTeam} Season Final Record")
+    iWins = 0
+    iLosses = 0
+    for game in iCountGames:
+        if result == "W":
+            print(f"{sTeam} vs {sOpponentTeam}: {sTeamScore} - {sOpponentTeamScore}, Win")
+            iWins = iWins + 1
+        else :
+            print(f"{sTeam} vs {sOpponentTeam}: {sTeamScore} - {sOpponentTeamScore}, Loss")
+            iLosses = iLosses + 1
+        print(f"Ending Team Record: wins: {iWins} - losses: {iLosses}")
+        fWinPer = (iWins/(iWins + iLosses))*100
+    return sTeam, iWins, iLosses, fWinPer
 
 # FUNCTION #6 - the main function
 def Main():
