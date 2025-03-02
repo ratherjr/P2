@@ -48,9 +48,11 @@ def teams(lstTeams=["BYU","Utah","UVU","USU","Utah Tech","SLCC"]):
     sAwayTeam = lstTeams[iAwayTeam - 1]
 
     print(f'\n')
-    return lstTeams[sAwayTeam]
+    return sAwayTeam
 
 # FUNCTION #4 - Alayna
+import random
+
 def play_game(sTeam, sAwayTeam):
     print(f"Game between {sTeam} and {sAwayTeam}")
     homeScore, opponentScore = 0, 0
@@ -65,20 +67,11 @@ def play_game(sTeam, sAwayTeam):
 
 # FUNCTION #5 - Elias
 def final_record(sTeam, iWins, iLosses, fWinPer):
-    #Display each game, both team scores, and 
     print(f"{sTeam} Season Final Record")
-    iWins = 0
-    iLosses = 0
-    for game in iCountGames:
-        if result == "W":
-            print(f"{sTeam} vs {sOpponentTeam}: {sTeamScore} - {sOpponentTeamScore}, Win")
-            iWins = iWins + 1
-        else :
-            print(f"{sTeam} vs {sOpponentTeam}: {sTeamScore} - {sOpponentTeamScore}, Loss")
-            iLosses = iLosses + 1
-        print(f"Ending Team Record: wins: {iWins} - losses: {iLosses}")
-        fWinPer = (iWins/(iWins + iLosses))*100
+    print(f"Ending Team Record: wins: {iWins} - losses: {iLosses}")
+    fWinPer = (iWins / (iWins + iLosses)) * 100 if (iWins + iLosses) > 0 else 0
     return sTeam, iWins, iLosses, fWinPer
+    
 
 # FUNCTION #6 - the main function
 def Main():
@@ -98,30 +91,40 @@ sTeam = None
 
 Main()
 
-function2
-def display_menu():
+Menu()
+
+def display_menu():  # Ensure this is defined before calling it
     iOption = 0
-    while not iOption == 4 :
+    while iOption != 4:  # Fixed condition
         print( """Select Option
 Option 1- Select 2 Teams
 Option 2- Generate random scores for both teams
 Option 3- Display final record for a team
 Option 4- Quit""")
-        iOption = int( input( "Option: "))
+        iOption = int(input("Option: "))
 
-        if iOption == 1 :
-            teams()
+        if iOption == 1:
+            teams()  # Call teams to select two teams
         
-        elif iOption == 2 :
-            # function 4
+        elif iOption == 2:
+            # Make sure to define sOpponentTeam before using it.
+            sOpponentTeam = teams()  # Call this to select the opponent team
+            homeScore, opponentScore, result = play_game(sTeam, sOpponentTeam)  # Pass the teams to play_game
+            if result == "W":
+                iWins += 1
+            else:
+                iLosses += 1
+            # Call final_record or other relevant function to display or process scores
 
-        elif iOption == 3 :
-            # enter function 5 here
+        elif iOption == 3:
+            # Call final_record function here
+            final_record(sTeam, iWins, iLosses, fWinPer)  # Example function call
 
         elif iOption == 4:
-            print( "\nExiting the program. Goodbye!")    
-    
-        else : print("Please enter valid number character: ")
+            print("\nExiting the program. Goodbye!")    
+
+        else:
+            print("Please enter a valid number character: ")
 
 
 # Input home team name and number of games
